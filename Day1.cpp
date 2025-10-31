@@ -31,22 +31,22 @@ using namespace std;
 // Q2)Given two arrays a[] and b[] of equal size, the task is to find whether the elements in the arrays are equal.
 // Two arrays are said to be equal if both contain the same set of elements, arrangements (or permutations) of elements may be different though.
 
-bool EqualOrNot(vector<int>&a,vector<int>&b){
-        sort(a.begin(),a.end());
-        sort(b.begin(),b.end());
-        if(a==b){
-            return true;
-        }
-        else{
-            return false;
-        };
-};
-int main(){
-    vector<int> a = {1,4,2,1,0};
-    vector<int> b = {2,1,1,4,0};
+// bool EqualOrNot(vector<int>&a,vector<int>&b){
+//         sort(a.begin(),a.end());
+//         sort(b.begin(),b.end());
+//         if(a==b){
+//             return true;
+//         }
+//         else{
+//             return false;
+//         };
+// };
+// int main(){
+//     vector<int> a = {1,4,2,1,0};
+//     vector<int> b = {2,1,1,4,0};
      
-    cout<<boolalpha<<EqualOrNot(a,b);
-};
+//     cout<<boolalpha<<EqualOrNot(a,b);
+// };
 
 
 
