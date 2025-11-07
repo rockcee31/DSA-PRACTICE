@@ -82,12 +82,68 @@
 // }
 
 
+// Move all negative elements to end and keep them in same order 
 
+// class Solution {
+//   public:
+//     void segregateElements(vector<int>& arr) {
+//         int i=arr.size()-1;
+//         int till=1;
+//         while(i>=0){
+//             if(arr[i]<0){
+//                 for(int j = i ;j<arr.size()-till;j++){
+//                     swap(arr[j],arr[j+1]);
+//                 }
+//                 i--;
+//                 till++;
+//             }
+//             else{
+//                 i--;
+//             }
+//         }
+//     }
+// };
+//this one is working but time complexity O(n^2)
 
+#include <iostream>
+#include <vector>
+using namespace std;
 
+class Solution {
+  public:
+    void segregateElements(vector<int>& arr) {
+        vector<int> arr1;  // empty vector
 
+        // Push all non-negative numbers first
+        for(int i : arr){
+            if(i >= 0){
+                arr1.push_back(i);
+            }
+        }
 
+        // Then push all negative numbers
+        for(int i : arr){
+            if(i < 0){
+                arr1.push_back(i);
+            }
+        }
 
+        arr = arr1;  // assign back to original vector
+    }
+};
+
+int main() {
+    Solution sol;
+    vector<int> arr = {1, -2, 3, -4, 0, 5, -1};
+
+    sol.segregateElements(arr);
+
+    cout << "Rearranged Array: ";
+    for(int i : arr) cout << i << " ";
+    cout << endl;
+
+    return 0;
+}
 
 
 
@@ -99,3 +155,9 @@
 // 3. 'void' as function return type means it does not return anything.
 // 4. Range-based for loop: for(int i : arr) cout << i << " "; prints all elements without {} if single statement.
 // 5. Class functions can directly modify vectors passed by reference (&), affecting the original array.
+
+// 6. C++ arrays cannot dynamically resize, so we use vector for dynamic size.
+// 7. vector<int> arr1(arr.size()) creates a vector of that size with all elements initialized to 0.
+// 8. Use push_back() to add elements to the end of a vector dynamically.
+// 9. Pass vector by reference (&) to modify the original array inside a function.
+// 10. Range-based for loop (for(int i : arr)) allows easy traversal without using indices.
