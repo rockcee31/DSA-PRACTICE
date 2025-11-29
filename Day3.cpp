@@ -208,3 +208,36 @@
 // 8. Use push_back() to add elements to the end of a vector dynamically.
 // 9. Pass vector by reference (&) to modify the original array inside a function.
 // 10. Range-based for loop (for(int i : arr)) allows easy traversal without using indices.
+
+// 1. Correct loop condition
+
+// Must use:
+// i >= 0 && j < n
+
+// Using OR (||) causes out-of-bounds access → logic error.
+
+// 2. Approach learned (Staircase Search)
+
+// Start bottom-left.
+
+// Move:
+
+// Up if value > target
+
+// Right if value < target
+
+// 3. Time & Space Complexity
+
+// Time: O(m + n)
+
+// Space: O(1)
+
+// 4. Comparison with Binary Search
+
+// Binary search = O(log(m·n)) → always faster asymptotically.
+
+// 5. Errors fixed
+
+// One major logic error (loop condition).
+
+// One syntax error (missing semicolon).
