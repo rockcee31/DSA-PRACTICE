@@ -82,7 +82,7 @@
 // }
 
 
-// Move all negative elements to end and keep them in same order 
+// -- Move all negative elements to end and keep them in same order 
 
 // class Solution {
 //   public:
@@ -105,48 +105,95 @@
 // };
 //this one is working but time complexity O(n^2)
 
-#include <iostream>
-#include <vector>
-using namespace std;
+// #include <iostream>
+// #include <vector>
+// using namespace std;
 
-class Solution {
-  public:
-    void segregateElements(vector<int>& arr) {
-        vector<int> arr1;  // empty vector
+// class Solution {
+//   public:
+//     void segregateElements(vector<int>& arr) {
+//         vector<int> arr1;  // empty vector
 
-        // Push all non-negative numbers first
-        for(int i : arr){
-            if(i >= 0){
-                arr1.push_back(i);
-            }
-        }
+//         // Push all non-negative numbers first
+//         for(int i : arr){
+//             if(i >= 0){
+//                 arr1.push_back(i);
+//             }
+//         }
 
-        // Then push all negative numbers
-        for(int i : arr){
-            if(i < 0){
-                arr1.push_back(i);
-            }
-        }
+//         // Then push all negative numbers
+//         for(int i : arr){
+//             if(i < 0){
+//                 arr1.push_back(i);
+//             }
+//         }
 
-        arr = arr1;  // assign back to original vector
-    }
-};
+//         arr = arr1;  // assign back to original vector
+//     }
+// };
 
-int main() {
-    Solution sol;
-    vector<int> arr = {1, -2, 3, -4, 0, 5, -1};
+// int main() {
+//     Solution sol;
+//     vector<int> arr = {1, -2, 3, -4, 0, 5, -1};
 
-    sol.segregateElements(arr);
+//     sol.segregateElements(arr);
 
-    cout << "Rearranged Array: ";
-    for(int i : arr) cout << i << " ";
-    cout << endl;
+//     cout << "Rearranged Array: ";
+//     for(int i : arr) cout << i << " ";
+//     cout << endl;
 
-    return 0;
-}
+//     return 0;
+// }
 
 
 
+
+//-- sorted matrix search
+// #include <iostream>
+// #include <vector>
+// using namespace std;
+
+// class Solution {
+// public:
+//     bool searchMatrix(vector<vector<int>>& matrix, int target) {
+//         int m = matrix.size();
+//         int n = matrix[0].size();
+//         int i = m - 1;
+//         int j = 0;
+
+//         while (i >= 0 || j < n) {   // (logical OR) <-- NOTE: should be AND in correct logic
+//             if (matrix[i][j] == target) {
+//                 return true;
+//             } 
+//             else if (matrix[i][j] > target) {
+//                 i--;
+//             } 
+//             else {
+//                 j++;
+//             }
+//         }
+//         return false;
+//     }
+// };
+
+// int main() {
+//     Solution obj;   // 🔥 OBJECT CREATED
+
+//     vector<vector<int>> matrix = {
+//         {1, 4, 7, 11},
+//         {2, 5, 8, 12},
+//         {3, 6, 9, 16},
+//         {10,13,14,17}
+//     };
+
+//     int target = 9;
+
+//     bool found = obj.searchMatrix(matrix, target);  // 🔥 METHOD CALLED
+
+//     cout << (found ? "Found" : "Not Found") << endl;
+
+//     return 0;
+// }
 
 
 // REVISION SUMMARY - NEW LEARNINGS
