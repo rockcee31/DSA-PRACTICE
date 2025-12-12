@@ -24,14 +24,14 @@ class Solution {
     }
 };
 
-int main(){
-    Solution ob;
-    vector<int> arr = {1,2,0,3};
-    int ans = ob.findEquilibrium(arr);
-    cout << ans;
+// int main(){
+//     Solution ob;
+//     vector<int> arr = {1,2,0,3};
+//     int ans = ob.findEquilibrium(arr);
+//     cout << ans;
 
 
-}
+// }
 
 // ✅ Problem kya tha?
 
@@ -100,3 +100,133 @@ int main(){
 // 5️⃣ Balanced array
 
 // Left half sum == right half sum.
+
+
+
+
+
+
+class Solution {
+  public:
+    vector<int> subarraySum(vector<int> &arr, int target) {
+        int left =0;
+        int right =0;
+        int n = arr.size();
+        int sum =0;
+        while(right<n){
+            sum+=arr[right];
+            
+            while(sum>target && left<=right){
+                sum -=arr[left];
+                left++;
+            }
+            
+            if(sum == target){
+                return {left+1,right+1};
+            }
+            
+            right++;
+        }
+        return {-1};
+        
+    };
+    
+        
+};
+
+
+int main(){
+    Solution s;
+    vector<int> arr = {1,3,7,5};
+    int target = 12;
+    vector<int> ans = s.subarraySum(arr,target);
+
+    for(auto &x:ans){
+        cout<<x<<" ";
+    }
+}
+
+
+// ✔ right is usually ahead of left — correct
+// ✔ However, shrinking can push left > right
+// ✔ left <= right ensures window never becomes invalid
+// ✔ Prevents subtracting from an empty window
+// ✔ Protects from out-of-bounds errors
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 🧠 Why sliding window works without sorting?
+
+// Because of this fact:
+
+// ➤ If all numbers are non-negative,
+
+// when you move right → sum increases
+// when you move left → sum decreases
+
+// So the window sum is monotonic with respect to movement, not with respect to array order.
+
+// Sorting is not required!
+
+// 🔍 Example (unsorted array)
+// arr = [5, 1, 7, 2, 3]
+
+
+// Sliding window works fine:
+
+// Extend right → sum becomes larger
+
+// Shrink left → sum becomes smaller
+
+// Even though 5,1,7,2,3 is not sorted.
