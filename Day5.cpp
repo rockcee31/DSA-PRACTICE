@@ -3,26 +3,27 @@
 #include <numeric>
 using namespace std;
 
-class Solution {
-  public:
-    // Function to find equilibrium point in the array.
-    int findEquilibrium(vector<int> &arr) {
-        // code here
-        int total_sum = accumulate(arr.begin(),arr.end(),0);
-       int left = 0;
-       int i = 0;
-       while(i<arr.size()){
-           int right =  total_sum - left-arr[i];
-           if(left  == right){
-               return i;
-           };
-           left += arr[i];
-           i++;
+// 1111111111111111111111111111111111111111
+// class Solution {
+//   public:
+//     // Function to find equilibrium point in the array.
+//     int findEquilibrium(vector<int> &arr) {
+//         // code here
+//         int total_sum = accumulate(arr.begin(),arr.end(),0);
+//        int left = 0;
+//        int i = 0;
+//        while(i<arr.size()){
+//            int right =  total_sum - left-arr[i];
+//            if(left  == right){
+//                return i;
+//            };
+//            left += arr[i];
+//            i++;
          
-       }
-       return -1;
-    }
-};
+//        }
+//        return -1;
+//     }
+// };
 
 // int main(){
 //     Solution ob;
@@ -105,46 +106,46 @@ class Solution {
 
 
 
-
-class Solution {
-  public:
-    vector<int> subarraySum(vector<int> &arr, int target) {
-        int left =0;
-        int right =0;
-        int n = arr.size();
-        int sum =0;
-        while(right<n){
-            sum+=arr[right];
+// 22222222222222222222222222222222222222222222222222222222222222222222222222
+// class Solution {
+//   public:
+//     vector<int> subarraySum(vector<int> &arr, int target) {
+//         int left =0;
+//         int right =0;
+//         int n = arr.size();
+//         int sum =0;
+//         while(right<n){
+//             sum+=arr[right];
             
-            while(sum>target && left<=right){
-                sum -=arr[left];
-                left++;
-            }
+//             while(sum>target && left<=right){
+//                 sum -=arr[left];
+//                 left++;
+//             }
             
-            if(sum == target){
-                return {left+1,right+1};
-            }
+//             if(sum == target){
+//                 return {left+1,right+1};
+//             }
             
-            right++;
-        }
-        return {-1};
+//             right++;
+//         }
+//         return {-1};
         
-    };
+//     };
     
         
-};
+// };
 
 
-int main(){
-    Solution s;
-    vector<int> arr = {1,3,7,5};
-    int target = 12;
-    vector<int> ans = s.subarraySum(arr,target);
+// int main(){
+//     Solution s;
+//     vector<int> arr = {1,3,7,5};
+//     int target = 12;
+//     vector<int> ans = s.subarraySum(arr,target);
 
-    for(auto &x:ans){
-        cout<<x<<" ";
-    }
-}
+//     for(auto &x:ans){
+//         cout<<x<<" ";
+//     }
+// }
 
 
 // ✔ right is usually ahead of left — correct
@@ -163,12 +164,57 @@ int main(){
 
 
 
+class Solution {
+  public:
+    int peakElement(vector<int> &arr) {
+        for(int i=0;i<arr.size();i++){
+            bool left = (i==0)||(arr[i]>arr[i-1]);
+            bool right = (i==arr.size()-1)||(arr[i]>arr[i+1]);
+            
+            if(left && right){
+                return i;
+            }
+            
+            
+        }
+        
+        return -1;
+        
+    }
+};
 
 
+int main() {
+    int n;
+    cin >> n;                     // size of array
+    
+    vector<int> arr(n);
+    for (int i = 0; i < n; i++)   // input array
+        cin >> arr[i];
+    
+    Solution s;
+    int peakIndex = s.peakElement(arr);
+    
+    cout << peakIndex << endl;    // print the peak index
+    
+    return 0;
+}
 
+// Python:
 
+// Allows negative indices → safe
 
+// You accidentally compare arr[-1] without error
 
+// But logic is incorrect for real peak definition
+
+// C++:
+
+// Negative index = INVALID
+
+// Causes out-of-bounds
+
+// Must ALWAYS check indices before accessing
 
 
 
